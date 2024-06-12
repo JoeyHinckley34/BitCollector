@@ -1,6 +1,8 @@
 # Bit Collector
 
-Welcome to **Bit Collector**, a fun and addictive clicker game where you collect bits to build and upgrade your tech empire.
+Welcome to **Bit Collector**, a fun and addictive clicker game where you collect bits to build and upgrade your tech empire. <br>
+https://joeyhinckley34.github.io/BitCollector/
+
 
 ## Table of Contents
 
