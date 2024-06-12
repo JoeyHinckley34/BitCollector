@@ -1,6 +1,6 @@
 # Bit Collector
 
-Welcome to **Bit Collector**, a fun and addictive clicker game where you collect bits to build and upgrade your tech empire. This project is a great way to practice and improve your web development skills using HTML, CSS, and JavaScript.
+Welcome to **Bit Collector**, a fun and addictive clicker game where you collect bits to build and upgrade your tech empire.
 
 ## Table of Contents
 
