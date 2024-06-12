@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>Bit Collector</h1>
+    <h1>Bits: <span id="bit-count">0</span></h1>
+    <div>
         <button id="click-button">Collect Bits!</button>
-        <p>Bits: <span id="bit-count">0</span></p>
-        <button id="upgrade-button">Upgrade System (Cost: 10 bits)</button>
-        <p>Bit Value: <span id="bit-value">1</span></p>
+    </div>
+    <div>
+        <div class="left-column">
+            <h2>Upgrades</h2>
+            <div id="upgrades-container"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
