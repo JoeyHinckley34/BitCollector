@@ -6,12 +6,16 @@ const clickButton = document.getElementById('click-button');
 const bitCountDisplay = document.getElementById('bit-count');
 const upgradesContainer = document.getElementById('upgrades-container');
 const bitValueDisplay = document.getElementById('bit-value');
+const autoClickersCountDisplay = document.getElementById('auto-clickers-count');
 
+// Adjust the effect functions to ensure values remain integers
 const upgrades = [
-    { id: 'upgrade-1', name: 'Upgrade System', cost: 10, effect: () => bitValue += 1 },
-    { id: 'upgrade-2', name: 'Super Upgrade System', cost: 100, effect: () => bitValue += 10 },
-    { id: 'upgrade-3', name: 'Autoclicker', cost: 50, effect: () => autoClickers += 1 }
+    { id: 'upgrade-1', name: 'Upgrade System', cost: 10, effect: () => { bitValue += 1; updateBitValueDisplay(); } },
+    { id: 'upgrade-2', name: 'Super Upgrade System', cost: 100, effect: () => { bitValue += 10; updateBitValueDisplay(); } },
+    { id: 'upgrade-3', name: 'Autoclicker', cost: 50, effect: () => { autoClickers += 1; updateAutoClickersCountDisplay(); } }
 ];
+
+upgrades.forEach(createUpgradeButton);
 
 function createUpgradeButton(upgrade) {
     const button = document.createElement('button');
@@ -25,6 +29,7 @@ function createUpgradeButton(upgrade) {
             upgrade.effect();
             bitCountDisplay.textContent = bitCount;
             bitValueDisplay.textContent = bitValue;
+            autoClickersCountDisplay.textContent = autoClickers;
             updateUpgradeButtons();
         }
     });
@@ -41,20 +46,41 @@ function updateUpgradeButtons() {
     });
 }
 
+// Function to update bit count display as an integer
+function updateBitCountDisplay() {
+    bitCountDisplay.textContent = Math.floor(bitCount);
+}
+
+// Function to update bit value display as an integer
+function updateBitValueDisplay() {
+    bitValueDisplay.textContent = Math.floor(bitValue);
+}
+
+// Function to update auto clickers display as an integer
+function updateAutoClickersCountDisplay() {
+    autoClickersCountDisplay.textContent = Math.floor(autoClickers);
+}
+
 clickButton.addEventListener('click', () => {
     bitCount += bitValue;
-    bitCountDisplay.textContent = bitCount;
+    updateBitCountDisplay();
     updateUpgradeButtons();
 });
 
-upgrades.forEach(createUpgradeButton);
-
 function autoClick() {
-    bitCount += autoClickers;
-    bitCountDisplay.textContent = bitCount;
+    bitCount += autoClickers / 10;
+    bitCount = Math.floor(bitCount);  // Ensure bitCount is an integer
+    updateBitCountDisplay();
     updateUpgradeButtons();
 }
 
-setInterval(autoClick, 1000);
+
+// Initialize the displays
+updateBitCountDisplay();
+updateBitValueDisplay();
+updateAutoClickersCountDisplay();
+
+// Set the interval to update 10 times per second
+setInterval(autoClick, 100);
 
 updateUpgradeButtons();
